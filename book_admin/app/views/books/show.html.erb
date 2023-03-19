@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookAdmin</title>
+  </head>
+  <body>
+    <h1>Book Info</h1>
+    <p>
+      <strong>Book Name</strong>
+      <%= @book.name %>
+    </p>
+    <p>
+      <strong>Price</strong>
+      <%= @book.price %>
+    </p>
+    <p>
+      <strong>Published on</strong>
+      <%= @book.published_on.to_s %>
+    </p>
+  </body>
+</html>
