@@ -13,8 +13,6 @@
         = link_to "AwsomeEvents", root_path, class: "navbar-brand mr-auto"
         %ul.navbar-nav
           %li.nav-item
-            = link_to "イベント一覧", events_path, class: "nav-link"
-          %li.nav-item
             = link_to "イベントを作る", new_event_path, class: "nav-link"
           - if logged_in?
             %li.nav-item

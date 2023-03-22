@@ -1,12 +1,6 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate, only: :show
 
-  def index
-    @events = Event.where("start_at > ?", Time.zone.now).order(:start_at)
-    @created_events = current_user.created_events.order(:start_at)
-    @participating_events = current_user.participating_events.order(:start_at)
-  end
-
   def show
     @event = Event.find(params[:id])
     @ticket = current_user && current_user.tickets.find_by(event: @event)
