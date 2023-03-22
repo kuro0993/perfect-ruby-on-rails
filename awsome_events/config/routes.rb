@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'session#create'
   delete '/logout' => 'session#destroy'
 
+  resources :retirements
+
   resources :events do
     resources :tickets
   end
