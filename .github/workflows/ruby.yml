@@ -1,0 +1,30 @@
+name: Ruby Tests
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby 2.6
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Build and test
+      env:
+        RAILS_ENV: test
+      run: |
+        sudo apt-get -yqq install libsqlite3-dev
+        bundle install --jobs 4 --retry 3
+        bin/rails db:create
+        bin/rails db:migrate
+        bin/yarn install
+        bin/rails test
+        bin/rails test:system
